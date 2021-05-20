@@ -1,15 +1,21 @@
 import leapyear
 import pytest
 
-def test_leapyear_good():
-    assert leapyear.is_leapyear(2020) == True
-    assert leapyear.is_leapyear(2021) == False
-    assert leapyear.is_leapyear(100) == False
-    assert leapyear.is_leapyear(400) == True
+import unittest
+import leapyear
 
-def test_leapyear_fail():
-    assert leapyear.is_leapyear(1) == True
+class TestCaseleapyear(unittest.TestCase):
+    def test_leapyear_good(self):
+        self.assertEqual(leapyear.is_leapyear(2020), True)
+        self.assertEqual(leapyear.is_leapyear(2021), False)
+        self.assertEqual(leapyear.is_leapyear(100), False)
+        self.assertEqual(leapyear.is_leapyear(400), True)
+    
+    def test_leapyear_fail(self):
+        self.assertEqual(leapyear.is_leapyear(1), True)
+    
+    def test_leapyear_exceptions(self):
+        self.assertRaises(TypeError, leapyear.is_leapyear, 'asdf')
 
-def test_leapyear_exceptions():
-    with pytest.raises(TypeError):
-        assert leapyear.is_leapyear('asdf')
+if __name__ == '__main__':
+    unittest.main()
