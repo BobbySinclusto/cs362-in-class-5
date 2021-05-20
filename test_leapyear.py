@@ -16,6 +16,8 @@ class TestCaseleapyear(unittest.TestCase):
     
     def test_leapyear_exceptions(self):
         self.assertRaises(TypeError, leapyear.is_leapyear, 'asdf')
+        self.assertRaises(ValueError, leapyear.is_leapyear, -4)
+
 
 if __name__ == '__main__':
     unittest.main()
